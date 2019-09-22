@@ -88,7 +88,8 @@ class Solution():
         
         return self.QuickSort(left) + [base] + self.QuickSort(right)
     
-    def 
+    def HeapSOrt(self, nums):
+        return nums
 
 a = Solution()
 
