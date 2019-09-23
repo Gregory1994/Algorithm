@@ -87,8 +87,42 @@ class Solution():
                 right.append(nums[i])
         
         return self.QuickSort(left) + [base] + self.QuickSort(right)
+
+    # 堆排序
+    def heapify(self, nums, n, i): # 对nums[i]进行堆排序，排序的最大index是n
+        largest = i  
+        l = 2 * i + 1     # left = 2*i + 1 
+        r = 2 * i + 2     # right = 2*i + 2 
+
+        # 小顶堆
+        # if l < n and nums[i] < nums[l]: 
+        #     largest = l 
     
-    def HeapSOrt(self, nums):
+        # if r < n and nums[largest] < nums[r]: 
+        #     largest = r 
+
+        # 大顶堆
+        if l < n and nums[i] > nums[l]: 
+            largest = l 
+    
+        if r < n and nums[largest] > nums[r]: 
+            largest = r 
+    
+        if largest != i: 
+            nums[i],nums[largest] = nums[largest],nums[i]  # 交换
+            self.heapify(nums, n, largest) 
+  
+    def heapSort(self, nums):
+        n = len(nums)
+
+        for i in range(n-1, -1, -1):
+            self.heapify(nums, n, i)
+
+        for i in range(n-1, 0, -1):
+            nums[i], nums[0] = nums[0], nums[i]
+            self.heapify(nums, i, 0)
+        
+        
         return nums
 
 a = Solution()
